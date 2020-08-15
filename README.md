@@ -1,2 +1,2 @@
 # auto-follow-up-mailer
-Automated mailer script
+Automated scraper and mailer

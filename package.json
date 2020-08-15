@@ -1,0 +1,39 @@
+{
+  "name": "auto-follow-up-mailer",
+  "version": "0.1.0",
+  "description": "Automated scraper and mailer",
+  "main": "src/main.js",
+  "private": true,
+  "scripts": {
+    "dev": "ts-node src/main.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lf-hernandez/auto-follow-up-mailer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/lf-hernandez/auto-follow-up-mailer/issues"
+  },
+  "homepage": "https://github.com/lf-hernandez/auto-follow-up-mailer#readme",
+  "devDependencies": {
+    "@types/bunyan": "^1.8.6",
+    "@types/csvtojson": "^1.1.5",
+    "@types/node": "^14.0.27",
+    "@types/nodemailer": "^6.4.0",
+    "@types/ora": "^3.2.0",
+    "@types/yargs": "^15.0.5",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "bunyan": "^1.8.14",
+    "chalk": "^4.1.0",
+    "csvtojson": "^2.0.10",
+    "nodemailer": "^6.4.11",
+    "ora": "^5.0.0",
+    "yargs": "^15.4.1"
+  }
+}
