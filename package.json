@@ -1,7 +1,7 @@
 {
-  "name": "auto-follow-up-mailer",
+  "name": "follow-up-mailer",
   "version": "0.1.0",
-  "description": "Automated scraper and mailer",
+  "description": "Automated follow-up mailer",
   "main": "src/main.js",
   "private": true,
   "scripts": {
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lf-hernandez/auto-follow-up-mailer.git"
+    "url": "git+https://github.com/lf-hernandez/follow-up-mailer.git"
   },
   "keywords": [],
   "author": "",
   "license": "",
   "bugs": {
-    "url": "https://github.com/lf-hernandez/auto-follow-up-mailer/issues"
+    "url": "https://github.com/lf-hernandez/follow-up-mailer/issues"
   },
-  "homepage": "https://github.com/lf-hernandez/auto-follow-up-mailer#readme",
+  "homepage": "https://github.com/lf-hernandez/follow-up-mailer#readme",
   "devDependencies": {
     "@types/bunyan": "^1.8.6",
     "@types/csvtojson": "^1.1.5",
@@ -32,6 +32,7 @@
     "bunyan": "^1.8.14",
     "chalk": "^4.1.0",
     "csvtojson": "^2.0.10",
+    "inquirer": "^7.3.3",
     "nodemailer": "^6.4.11",
     "ora": "^5.0.0",
     "yargs": "^15.4.1"
