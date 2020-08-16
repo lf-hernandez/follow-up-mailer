@@ -1,2 +1,2 @@
-# auto-follow-up-mailer
-Automated mailer
+# Follow-up Mailer
+CLI tool for automating follow-up emails
