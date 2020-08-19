@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "ts-node src/main.ts",
     "compile": "tsc",
-    "build": "pkg ."
+    "build": "pkg . -t node14-win-x64"
   },
   "repository": {
     "type": "git",
