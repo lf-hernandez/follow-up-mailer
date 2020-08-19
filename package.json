@@ -2,10 +2,13 @@
   "name": "follow-up-mailer",
   "version": "0.1.0",
   "description": "Automated follow-up mailer",
-  "main": "src/main.js",
+  "main": "dist/main.js",
+  "bin": "bin.js",
   "private": true,
   "scripts": {
-    "dev": "ts-node src/main.ts"
+    "dev": "ts-node src/main.ts",
+    "compile": "tsc",
+    "build": "pkg ."
   },
   "repository": {
     "type": "git",
