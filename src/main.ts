@@ -1,6 +1,7 @@
 import { run } from './cli';
-function main() {
-    run();
+
+async function main() {
+    await run();
 }
 
 main();

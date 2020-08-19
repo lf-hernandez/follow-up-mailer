@@ -1,38 +1,56 @@
-import yargs from 'yargs';
+import chalk from 'chalk';
+import inquirer from 'inquirer';
 import { main } from './mailer';
+import fs from 'fs';
+import validator from 'validator';
 
-const args = yargs.options({
-    file: {
-        description: 'csv file',
-        type: 'string',
-        demandOption: true,
-        alias: 'f'
-    },
-    body: {
-        description: 'file containing message body',
-        type: 'string',
-        demandOption: true,
-        alias: 'b'
-    },
-    email: {
-        description: 'email',
-        type: 'string',
-        demandOption: true,
-        alias: 'e'
-    },
-    pass: {
-        description: 'password',
-        type: 'string',
-        demandOption: true,
-        alias: 'p'
-    }
-}).check((data) => {
-    return data.file.endsWith('.csv');
-}).argv;
+export async function run() {
+    const args = await generateArgs();
 
-export function run() {
     main(args.file, args.body, args.email, args.pass).catch((error) => {
         console.error(error.message);
         process.exit(1);
     });
 }
+
+async function generateArgs() {
+    const files = fs.readdirSync(process.cwd());
+
+    const args = await inquirer.prompt([
+        {
+            type: "input",
+            name: "email",
+            message: "Enter email: ",
+            validate: validateEmail
+        },
+        {
+            type: "input",
+            name: "pass",
+            message: "Enter email password or app password if MFA is enabled:",
+
+        },
+        {
+            type: "list",
+            name: "file",
+            message: `Select file to scrape data from ${ chalk.yellow('<Must be a csv>')}:`,
+            choices: [...files.filter((file) => file.endsWith('csv'))]
+
+        }, 
+        {
+            type: "list",
+            name: "body", 
+            message: `Choose message body content file ${ chalk.cyan('<Must be a txt>')}`,
+            choices: [...files.filter((file) => file.endsWith('txt'))]
+        }
+    ]);
+
+    return args;
+}
+
+const validateEmail = async(input: string) => {
+    if(!validator.isEmail(input)) {
+        return chalk.red('Invalid email. Please try again.')
+    }
+
+    return true;
+};
