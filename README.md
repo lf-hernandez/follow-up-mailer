@@ -27,3 +27,7 @@ npm compile
 ```
 npm run build
 ```
+## Lint and fix
+```
+npm run lint
+```
