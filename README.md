@@ -27,7 +27,13 @@ npm compile
 ```
 npm run build
 ```
+
 ## Lint and fix
 ```
 npm run lint
+```
+
+## Format using Prettier
+```
+npm run format
 ```
