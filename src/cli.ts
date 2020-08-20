@@ -21,27 +21,27 @@ async function generateArgs() {
 
     const args = await inquirer.prompt([
         {
-            type: "input",
-            name: "email",
-            message: "Enter email: ",
+            type: 'input',
+            name: 'email',
+            message: 'Enter email: ',
             validate: validateEmail
         },
         {
-            type: "input",
-            name: "pass",
-            message: "Enter email password or app password if MFA is enabled:",
+            type: 'input',
+            name: 'pass',
+            message: 'Enter email password or app password if MFA is enabled:',
 
         },
         {
-            type: "list",
-            name: "file",
+            type: 'list',
+            name: 'file',
             message: `Select file to scrape data from ${ chalk.yellow('<Must be a csv>')}:`,
             choices: [...files.filter((file) => file.endsWith('csv'))]
 
         }, 
         {
-            type: "list",
-            name: "body", 
+            type: 'list',
+            name: 'body', 
             message: `Choose message body content file ${ chalk.yellow('<Must be a txt>')}`,
             choices: [...files.filter((file) => file.endsWith('txt'))]
         }
@@ -52,7 +52,7 @@ async function generateArgs() {
 
 const validateEmail = async(input: string) => {
     if(!validator.isEmail(input)) {
-        return chalk.red('Invalid email. Please try again.')
+        return chalk.red('Invalid email. Please try again.');
     }
 
     return true;
