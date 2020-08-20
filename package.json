@@ -3,9 +3,13 @@
   "version": "0.1.0",
   "description": "Automated follow-up mailer",
   "main": "dist/main.js",
-  "bin": "bin.js",
+  "pkg": {
+    "scripts": "dist/*.js"
+  },
+  "bin": "dist/main.js",
   "private": true,
   "scripts": {
+    "start": "node dist/main.js",
     "dev": "ts-node src/main.ts",
     "compile": "tsc",
     "build": "pkg . -t node14-win-x64"
@@ -23,6 +27,7 @@
   "homepage": "https://github.com/lf-hernandez/follow-up-mailer#readme",
   "devDependencies": {
     "@types/bunyan": "^1.8.6",
+    "@types/commander": "^2.12.2",
     "@types/csvtojson": "^1.1.5",
     "@types/dotenv": "^8.2.0",
     "@types/inquirer": "^7.3.0",
