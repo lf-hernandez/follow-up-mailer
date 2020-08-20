@@ -4,8 +4,8 @@ export interface SmtpConfig {
 }
 
 const config: SmtpConfig = {
-    HOST: String(process.env.SMTP_HOST),
-    PORT: Number(process.env.SMTP_PORT) 
+    HOST: String(process.env.SMTP_HOST) ?? 'smtp.gmail.com',
+    PORT: Number(process.env.SMTP_PORT) ?? 587
 }
 
 export default config;
