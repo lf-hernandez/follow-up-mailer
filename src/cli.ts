@@ -5,6 +5,9 @@ import fs from 'fs';
 import validator from 'validator';
 
 export async function run() {
+    console.log(`Follow-up Mailer ${ process.env.npm_package_version}`);
+    console.log(chalk.yellowBright('Note: If cwd doesn\'t contain .env with smtp host and port, transporter will be set to gmail smtp settings.'));
+
     const args = await generateArgs();
 
     main(args.file, args.body, args.email, args.pass).catch((error) => {
@@ -39,7 +42,7 @@ async function generateArgs() {
         {
             type: "list",
             name: "body", 
-            message: `Choose message body content file ${ chalk.cyan('<Must be a txt>')}`,
+            message: `Choose message body content file ${ chalk.yellow('<Must be a txt>')}`,
             choices: [...files.filter((file) => file.endsWith('txt'))]
         }
     ]);
