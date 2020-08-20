@@ -3,7 +3,10 @@ import csv from 'csvtojson';
 import nodemailer from 'nodemailer';
 import fs from 'fs';
 
+import smtpConfig from './config/smtp.config';
+
 import { CsvRecord, NormalizedRecord } from './interfaces';
+import chalk from 'chalk';
 
 export async function main(csvFile: string, bodyFile: string, email: string, pass: string) {
     let logger = bunyan.createLogger({ name: 'nodemailer', }); logger.level('trace');
@@ -24,36 +27,40 @@ export async function main(csvFile: string, bodyFile: string, email: string, pas
 
     const transporter = nodemailer.createTransport(
         {
-            host: '[smtp host]',
-            port: 587,
+            host: smtpConfig.HOST,
+            port: smtpConfig.PORT,
             secure: false,
             auth: {
                 user: email,
                 pass: pass,
-            },
-            logger,
-            debug: true
+            }
         });
 
     console.log('SMTP Configured');
-    console.log('Sending Mail...');
+    console.log(chalk.yellow('Sending Mail...'));
 
     normalizedArray.forEach(async (record) => {
         const message = generateMessage(record, email)
-        const info = await transporter.sendMail(message);
 
-        console.log(`Message sent: ${info.messageId}`);
-        console.log(`Server responded with ${info.response}`);
+        try {
+            const info = await transporter.sendMail(message);
+
+            console.log(`${chalk.green('Message sent:')} ${info.messageId}`);
+            console.log(`${chalk.green('Server responded with')} ${info.response}`);
+        }
+        catch (error) {
+            console.log(chalk.red(error.message));
+        }
     })
 }
 
 function generateMessage(record: NormalizedRecord, sender: string) {
     return {
-        from: sender,
+        from: `"Follow-Up Mailer 👻" <${sender}>`,
         to: record.email,
-        subject: 'Follow-up on your recent purchase',
+        subject: 'Save money on a future purchase!',
         text: record.message,
-        html: `<p>${record.message}</p>`
+        html: `<p>${record.message.replace(/(?:\r\n|\r|\n)/g, '<br>')}</p>`
     }
 };
 
