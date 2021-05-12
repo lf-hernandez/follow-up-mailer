@@ -64,7 +64,7 @@
     "csvtojson": "^2.0.10",
     "dotenv": "^8.2.0",
     "inquirer": "^7.3.3",
-    "nodemailer": "^6.4.11",
+    "nodemailer": "^6.4.16",
     "ora": "^5.0.0",
     "validator": "^13.1.1"
   }
