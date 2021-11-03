@@ -66,6 +66,6 @@
     "inquirer": "^7.3.3",
     "nodemailer": "^6.4.11",
     "ora": "^5.0.0",
-    "validator": "^13.1.1"
+    "validator": "^13.7.0"
   }
 }
